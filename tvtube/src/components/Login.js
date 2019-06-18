@@ -3,80 +3,24 @@ import React from 'react';
 
 
 class Login extends React.Component {
-  constructor() {
-   super();
-   this.state = {
-     username: '',
-     password: '',
-     error: '',
-   };
 
-   this.handlePassChange = this.handlePassChange.bind(this);
-   this.handleUserChange = this.handleUserChange.bind(this);
-   this.handleSubmit = this.handleSubmit.bind(this);
-   this.dismissError = this.dismissError.bind(this);
- }
+  handleSubmit =(evt) => {
+    evt.preventDefault()
+    this.props.login(true)
+  }
 
- dismissError() {
-   this.setState({ error: '' });
- }
+  render(){
+    return(
 
- handleSubmit(evt) {
-   evt.preventDefault();
-
-   if (!this.state.username) {
-     return this.setState({ error: 'Username is required' });
-   }
-
-   if (!this.state.password) {
-     return this.setState({ error: 'Password is required' });
-   }
-   // return this.setState({ error: '' });
-
-   return this.props.login(this.state.username)
- }
-
- handleUserChange(evt) {
-   this.setState({
-     username: evt.target.value,
-   });
- };
-
- handlePassChange(evt) {
-   this.setState({
-     password: evt.target.value,
-   });
- }
-
- render() {
-   return (
-     <div className="Login">
-       <form onSubmit={this.handleSubmit}>
-         {
-           this.state.error &&
-           <h3 data-test="error" onClick={this.dismissError}>
-             <button onClick={this.dismissError}>✖</button>
-             {this.state.error}
-           </h3>
-         }
-         <input placeholder="username"
-         type="text"
-         data-test="username"
-         value={this.state.username}
-         onChange={this.handleUserChange} />
-
-         <input placeholder="password🤫"
-         type="password"
-         data-test="password"
-         value={this.state.password}
-         onChange={this.handlePassChange} />
-
-         <input type="submit" value="Log In" data-test="submit" />
-       </form>
-     </div>
-   );
- }
+      <form onSubmit={this.handleSubmit}>
+        Name: <input onChange={this.props.user} name="username" type="text" placeholder="username" minLength="3" required="required"/>
+        <br/>
+        <input onClick={this.handleClick} name="submit" type="submit" value="LOGIN"/>
+      </form>
+    )
+  }
 }
+
 
 
 export default Login;

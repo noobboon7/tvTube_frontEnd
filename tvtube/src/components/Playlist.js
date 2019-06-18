@@ -7,7 +7,11 @@ class Playlist extends React.Component {
     return(
       <div>
         <ol>
-        <li>I am a tv show</li>
+        {this.props.playlist.map(show =>
+          <li>
+          <img src={show.thumbnail} alt={show.name} />
+          {show.name}
+          </li>)}
         </ol>
       </div>
     )

@@ -17,7 +17,7 @@ class SearchBar extends React.Component {
   }
   render() {
     return(
-      <div class="ui fluid category search">
+      <div className="SearchBar" class="ui fluid category search">
         <div class="ui icon input">
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleChange} name="searchQuery" class="prompt" type="text" placeholder="Search Shows..."/>
