@@ -9,13 +9,14 @@ class NavBar extends React.Component {
     return(
       <>
       <h1>Welcome Back {this.props.user}!</h1>
-      <div className="NavBar" class="ui top attached tabular menu">
+      <div  className="ui top attached tabular menu">
         <Link to="/home">
-        <button class="item active" data-tab="home">Home</button>
+        <button className="item active" data-tab="home">Home</button>
         </Link>
         <Link to="/playlist">
-        <button class="item active" data-tab="playlist">Playlist</button>
+        <button className="item active" data-tab="playlist">Playlist</button>
         </Link>
+        <button onClick={this.props.logout} type="button">LOGOUT</button>
         <SearchBar/>
       </div>
       </>

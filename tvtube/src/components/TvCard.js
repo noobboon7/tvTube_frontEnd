@@ -11,21 +11,21 @@ class TvCard extends React.Component {
   render() {
     const {name,poster,genre,id,runtime,summary}= this.props.tv
     return(
-      <div  id= {id} class="item">
-        <div class="ui small image">
+      <div  id= {id} className="item">
+        <div className="ui small image">
           <img src={poster} alt={name} />
-          <button class="ui button" onClick={this.handleClick}>AddtoPlaylist</button>
+          <button className="ui button" onClick={this.handleClick}>AddtoPlaylist</button>
         </div>
-        <div class="middle aligned content">
-           <div class="header">
+        <div className="middle aligned content">
+           <div className="header">
              {name}
            </div>
-           <div class="description">
+           <div className="description">
              {summary}
            </div>
            <div>
             <h6 className="runtime">Runtime:{runtime}</h6>
-            <h6 className="genre">Genres:{genre} Runtime:{runtime}</h6>
+            <h6 className="genre">Genres:{genre}</h6>
            </div>
          </div>
       </div>

@@ -8,9 +8,12 @@ class Playlist extends React.Component {
       <div>
         <ol>
         {this.props.playlist.map(show =>
-          <li>
+
+          <li key={show.id}>
           <img src={show.thumbnail} alt={show.name} />
           {show.name}
+          <button onClick={() => {
+            this.props.remove(show)}} className="remove">Remove</button>
           </li>)}
         </ol>
       </div>

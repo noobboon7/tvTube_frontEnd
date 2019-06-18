@@ -17,14 +17,14 @@ class SearchBar extends React.Component {
   }
   render() {
     return(
-      <div className="SearchBar" class="ui fluid category search">
-        <div class="ui icon input">
+      <div className="ui fluid category search">
+        <div className="ui icon input">
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} name="searchQuery" class="prompt" type="text" placeholder="Search Shows..."/>
-          <i class="search icon"></i>
+          <input onChange={this.handleChange} name="searchQuery" className="prompt" type="text" placeholder="Search Shows..."/>
+          <i className="search icon"></i>
           </form>
         </div>
-          <div class="results"></div>
+          <div className="results"></div>
       </div>
     )
   }

@@ -14,7 +14,7 @@ class App extends React.Component {
     playlist:[],
     showSearch:"",
     user:"",
-    loggedIn: true,
+    loggedIn: false,
     page: "home"
   }
   componentDidMount() {
@@ -38,10 +38,21 @@ class App extends React.Component {
        playlist: [...this.state.playlist, tvshow]
      })
   }
+  removeFromPlaylist = (showObj) => {
+    this.setState({
+      playlist: this.state.playlist.filter(show => show.id !== showObj.id)
+    })
+  }
   handleLogIn= (bool) => {
-    console.log(bool);
     this.setState({
       loggedIn: bool
+    })
+  }
+
+  logOut = () => {
+    console.log();
+    this.setState({
+      loggedIn: false
     })
   }
 
@@ -52,10 +63,10 @@ class App extends React.Component {
 
       {this.state.loggedIn?
         <div  className="App-header">
-          <NavBar user={this.state.user} playlist={this.state.playlist}/>
+          <NavBar user={this.state.user} playlist={this.state.playlist} logout={this.logOut} />
           <Switch>
           <Route path='/playlist' render={(routerProps) => {
-            return <Playlist playlist={this.state.playlist}/>
+            return <Playlist remove={this.removeFromPlaylist} playlist={this.state.playlist}/>
           }}
           />
 
@@ -65,6 +76,9 @@ class App extends React.Component {
           tvData={this.state.tvData}
           search={this.state.showSearch}/>
         }}/>
+          <Route path="/" render={() => {
+            return <h1>TVTUBE</h1>
+          }}/>
           </Switch>
         </div>
         :

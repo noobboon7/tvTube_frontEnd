@@ -5,7 +5,7 @@ class MainContent extends React.Component {
   render() {
     return(
       this.props.tvData.map(info => {
-        return <div key={info.id} class="ui items">
+        return <div key={info.id} className="ui items">
         <TvCard
         addTv={this.props.addTv}
         tv={info}/>
