@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
   }
   handleSubmit = (event) => {
     event.preventDefault()
-
+    this.props.search(this.state.searchQuery)
   }
   handleChange = (event) => {
     this.setState({

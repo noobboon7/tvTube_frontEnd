@@ -15,7 +15,7 @@ class App extends React.Component {
     showSearch:"",
     user:"",
     loggedIn: false,
-    page: "home"
+    page: "/"
   }
   componentDidMount() {
     fetch("http://localhost:3000/tvshows")
@@ -27,7 +27,9 @@ class App extends React.Component {
     })
   }
 
-
+  // filterSearch =() => {
+  //
+  // }
   currentUser =(event) => {
     this.setState({
       user: event.target.value
@@ -50,7 +52,6 @@ class App extends React.Component {
   }
 
   logOut = () => {
-    console.log();
     this.setState({
       loggedIn: false
     })
@@ -63,7 +64,10 @@ class App extends React.Component {
 
       {this.state.loggedIn?
         <div  className="App-header">
-          <NavBar user={this.state.user} playlist={this.state.playlist} logout={this.logOut} />
+          <NavBar user={this.state.user}
+          playlist={this.state.playlist}
+          logout={this.logOut}
+          search={this.state.showSearch}/>
           <Switch>
           <Route path='/playlist' render={(routerProps) => {
             return <Playlist remove={this.removeFromPlaylist} playlist={this.state.playlist}/>
@@ -73,11 +77,10 @@ class App extends React.Component {
           <Route path="/home" render={(routerProps) => {
           return <MainContent
           addTv={this.AddtoPlaylist}
-          tvData={this.state.tvData}
-          search={this.state.showSearch}/>
+          tvData={this.state.tvData}/>
         }}/>
           <Route path="/" render={() => {
-            return <h1>TVTUBE</h1>
+            return <><h1>TVTUBE</h1> <img src="./Tv.jpeg" alt="TVTUBE" /></>
           }}/>
           </Switch>
         </div>

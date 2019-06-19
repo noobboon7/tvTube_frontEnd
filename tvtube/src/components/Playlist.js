@@ -5,18 +5,19 @@ import React from 'react';
 class Playlist extends React.Component {
   render() {
     return(
-      <div>
-        <ol>
+      <div className="ui horizontal list">
         {this.props.playlist.map(show =>
-
-          <li key={show.id}>
+          <div key={show.id} className="item">
           <img src={show.thumbnail} alt={show.name} />
-          {show.name}
-          <button onClick={() => {
-            this.props.remove(show)}} className="remove">Remove</button>
-          </li>)}
-        </ol>
+            <div className="content">
+              <div className="header">{show.name}</div>
+              <button onClick={() => {
+                this.props.remove(show)}} className="remove">Remove</button>
+            </div>
+          </div>
+      )}
       </div>
+
     )
   }
 }
