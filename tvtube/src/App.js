@@ -27,9 +27,11 @@ class App extends React.Component {
     })
   }
 
-  // filterSearch =() => {
-  //
-  // }
+  filterSearch =(input) => {
+    this.state.tvData.filter(show => {
+      return show.name.toLowerCase() === input.name.toLowerCase()
+    })
+  }
   currentUser =(event) => {
     this.setState({
       user: event.target.value
@@ -73,11 +75,10 @@ class App extends React.Component {
             return <Playlist remove={this.removeFromPlaylist} playlist={this.state.playlist}/>
           }}
           />
-
           <Route path="/home" render={(routerProps) => {
           return <MainContent
           addTv={this.AddtoPlaylist}
-          tvData={this.state.tvData}/>
+          tvData={this.state.tvData.filter(show => show.name.toLowerCase().includes(this.state.showSearch.toLowerCase()))}/>
         }}/>
           <Route path="/" render={() => {
             return <><h1>TVTUBE</h1> <img src="./Tv.jpeg" alt="TVTUBE" /></>
